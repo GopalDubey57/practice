@@ -1,0 +1,24 @@
+#include <bits/stdc++.h>
+using namespace std;
+int solve(vector<char> &vec,int i){
+    if(i>vec.size()||i<0||vec[i]=='w')
+        return 0;
+    vec[i] = 'w';
+    int right{};
+    
+    int left{};
+    right+= solve(vec,i+1);
+    left+= solve(vec,i-1);
+    return 1 + max(left,right);
+}
+int main()
+{
+    vector<char> forest = {'T','w','T','T','T','T','T','T','T','w'};
+    
+    cout<<solve(forest,7);
+    
+    // for(auto i:forest){
+    //     cout<<i<<" ";
+    // }
+    return 0;
+}
